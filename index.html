@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thumbnail Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube Thumbnail Generator</h1>
+
+    <!-- Video Metadata Input Section -->
+    <div class="video-metadata">
+      <label for="videoTitle">Video Title:</label>
+      <input type="text" id="videoTitle" placeholder="Enter video title">
+      
+      <label for="videoTags">Tags:</label>
+      <input type="text" id="videoTags" placeholder="Enter video tags">
+      
+      <button id="generateTrends">Fetch Trend Insights</button>
+    </div>
+
+    <!-- Trending Insights Section -->
+    <div id="trendInsights">
+      <h2>Trending Keywords</h2>
+      <ul id="trendingList"></ul>
+    </div>
+
+    <!-- Thumbnail Editor Section -->
+    <div class="thumbnail-editor">
+      <canvas id="thumbnailCanvas"></canvas>
+      <input type="text" id="textOverlay" placeholder="Enter thumbnail text">
+      <button id="updateThumbnail">Update Thumbnail</button>
+    </div>
+
+    <!-- Download Button -->
+    <button id="downloadThumbnail">Download Thumbnail</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
