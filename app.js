@@ -1,28 +1,24 @@
-document.getElementById("generateTrends").addEventListener("click", function() {
-  // Simulate fetching trend insights
-  let trendingList = document.getElementById("trendingList");
-  trendingList.innerHTML = "<li>Trending Keyword 1</li><li>Trending Keyword 2</li>";
-});
+document.getElementById('calculateBtn').addEventListener('click', calculateAge);
 
-document.getElementById("updateThumbnail").addEventListener("click", function() {
-  let canvas = document.getElementById("thumbnailCanvas");
-  let context = canvas.getContext("2d");
+function calculateAge() {
+    const dob = new Date(document.getElementById('dob').value);
+    const today = new Date();
+    
+    if (!dob) {
+        document.getElementById('result').innerHTML = 'Please enter a valid date of birth.';
+        return;
+    }
 
-  // Basic thumbnail background
-  context.fillStyle = "#ccc";
-  context.fillRect(0, 0, canvas.width, canvas.height);
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDifference = today.getMonth() - dob.getMonth();
+    
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
 
-  // Adding text to thumbnail
-  let textOverlay = document.getElementById("textOverlay").value;
-  context.fillStyle = "#000";
-  context.font = "30px Arial";
-  context.fillText(textOverlay, 50, 100);
-});
-
-document.getElementById("downloadThumbnail").addEventListener("click", function() {
-  let canvas = document.getElementById("thumbnailCanvas");
-  let link = document.createElement('a');
-  link.download = 'thumbnail.png';
-  link.href = canvas.toDataURL();
-  link.click();
-});
+    const months = Math.abs(today.getMonth() - dob.getMonth());
+    const days = Math.abs(today.getDate() - dob.getDate());
+    
+    // Display the result
+    document.getElementById('result').innerHTML = `Age: ${age} years, ${months} months, ${days} days`;
+}
